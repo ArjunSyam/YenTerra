@@ -2,8 +2,8 @@ import type {
   BalanceData,
   CategorySpend,
   MonthlyFlow,
-  BudgetEntry,
   CurrentTime,
+  DebtEntry,
 } from "@/lib/types";
 
 export const BALANCE_DATA: BalanceData = {
@@ -31,7 +31,40 @@ export const MONTHLY_FLOW: MonthlyFlow[] = [
   { month: "Apr", income: 4780, expense: 3908 },
 ];
 
-export const BUDGET_DATA: BudgetEntry[] = [
-  { name: "Spent", value: 2030, fill: "var(--color-Spent)" },
-  { name: "Remaining", value: 1970, fill: "var(--color-Remaining)" },
+export const DEBT_DATA: DebtEntry[] = [
+  {
+    id: "1",
+    name: "Arjun",
+    amount: 500,
+    direction: "owed",
+    reason: "Lunch split",
+  },
+  {
+    id: "2",
+    name: "Priya",
+    amount: 1200,
+    direction: "owe",
+    reason: "Concert ticket",
+  },
+  {
+    id: "3",
+    name: "Rahul",
+    amount: 300,
+    direction: "owed",
+    reason: "Cab fare",
+  },
+  {
+    id: "4",
+    name: "Sneha",
+    amount: 800,
+    direction: "owe",
+    reason: "Groceries",
+  },
+  {
+    id: "5",
+    name: "Karthik",
+    amount: 150,
+    direction: "owed",
+    reason: "Coffee",
+  },
 ];

@@ -44,7 +44,7 @@ interface SpendingSummaryProps {
 
 export function SpendingSummary({ data, time }: SpendingSummaryProps) {
   return (
-    <Card className="flex flex-col">
+    <Card className="flex-1">
       <CardHeader className="items-center pb-0">
         <CardTitle>Spending by Category</CardTitle>
         <CardDescription>

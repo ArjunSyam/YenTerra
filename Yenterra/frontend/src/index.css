@@ -101,7 +101,7 @@
     --accent: #458588;
     --accent-foreground: oklch(90% 0.04 90);
     --destructive: oklch(55% 0.18 25); /* #fb4934 red     */
-    --border: #3c3836;
+    --border: oklch(50% 0.04 90);
     --input: oklch(1 0 0 / 15%);
     --ring: oklch(55% 0.08 155);
     --chart-1: oklch(55% 0.2 25); /* red    #fb4934  */

@@ -25,13 +25,17 @@ export interface MonthlyFlow {
   expense: number;
 }
 
-export interface BudgetEntry {
-  name: string;
-  value: number;
-  fill: string;
-}
-
 export interface BalanceData {
   amount: number;
   currency: string;
+}
+
+export type DebtDirection = "owe" | "owed";
+
+export interface DebtEntry {
+  id: string;
+  name: string;
+  amount: number;
+  direction: DebtDirection; // "owe" = I owe them, "owed" = they owe me
+  reason: string;
 }

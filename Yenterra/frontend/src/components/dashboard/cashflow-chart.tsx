@@ -1,58 +1,81 @@
+import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
-import type { MonthlyFlow } from "@/lib/types";
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
+
+import type { MonthlyFlow, CurrentTime } from "@/lib/types";
+
+const chartConfig = {
+  income: {
+    label: "Income",
+    color: "var(--chart-1)",
+  },
+  expense: {
+    label: "Expense",
+    color: "var(--chart-2)",
+  },
+} satisfies ChartConfig;
 
 interface CashflowChartProps {
   data: MonthlyFlow[];
+  time: CurrentTime;
 }
 
-export function CashflowChart({ data }: CashflowChartProps) {
+export function CashflowChart({ data, time }: CashflowChartProps) {
   return (
     <Card className="flex-1">
       <CardHeader>
-        <CardTitle>Income vs Expenses</CardTitle>
+        <CardTitle>Cashflow {time.year}</CardTitle>
       </CardHeader>
       <CardContent>
-        <ResponsiveContainer width="100%" height={250}>
-          <BarChart data={data} barGap={4}>
+        <ChartContainer config={chartConfig}>
+          <LineChart
+            accessibilityLayer
+            data={data}
+            margin={{
+              left: 12,
+              right: 12,
+            }}
+          >
+            <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"
-              stroke="hsl(var(--muted-foreground))"
-              tick={{ fontSize: 12 }}
+              tickLine={false}
+              axisLine={false}
+              tickMargin={8}
+              tickFormatter={(value) => value.slice(0, 3)}
             />
-            <YAxis
-              stroke="hsl(var(--muted-foreground))"
-              tick={{ fontSize: 12 }}
-            />
-            <Tooltip
-              contentStyle={{
-                backgroundColor: "hsl(var(--card))",
-                border: "1px solid hsl(var(--border))",
-                borderRadius: "6px",
-                color: "hsl(var(--card-foreground))",
+            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+            <Line
+              dataKey="income"
+              type="linear"
+              stroke="var(--color-income)"
+              strokeWidth={2}
+              dot={{
+                fill: "var(--color-income)",
+              }}
+              activeDot={{
+                r: 6,
               }}
             />
-            <Bar
-              dataKey="income"
-              name="Income"
-              fill="hsl(var(--chart-2))"
-              radius={[4, 4, 0, 0]}
-            />
-            <Bar
+            <Line
               dataKey="expense"
-              name="Expense"
-              fill="hsl(var(--chart-1))"
-              radius={[4, 4, 0, 0]}
+              type="linear"
+              stroke="var(--color-expense)"
+              strokeWidth={2}
+              dot={{
+                fill: "var(--color-expense)",
+              }}
+              activeDot={{
+                r: 6,
+              }}
             />
-          </BarChart>
-        </ResponsiveContainer>
+          </LineChart>
+        </ChartContainer>
       </CardContent>
     </Card>
   );
