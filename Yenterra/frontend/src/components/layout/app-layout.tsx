@@ -1,0 +1,17 @@
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/sidebar/app-sidebar";
+
+interface AppLayoutProps {
+  children: React.ReactNode;
+}
+
+export function AppLayout({ children }: AppLayoutProps) {
+  return (
+    <SidebarProvider>
+      <div className="flex h-screen w-full overflow-hidden">
+        <AppSidebar />
+        <main className="flex-1 overflow-y-auto bg-background">{children}</main>
+      </div>
+    </SidebarProvider>
+  );
+}
