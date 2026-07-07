@@ -54,14 +54,14 @@ export function SpendingSummary({ data, time }: SpendingSummaryProps) {
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto aspect-square max-h-[250px] fill-foreground"
         >
           <PieChart>
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Pie data={data} dataKey="value" nameKey="name" stroke="0" />
+            <Pie data={data} dataKey="value" nameKey="name" />
           </PieChart>
         </ChartContainer>
       </CardContent>

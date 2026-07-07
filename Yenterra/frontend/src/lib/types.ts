@@ -10,6 +10,7 @@ export interface NavItem {
   title: string;
   icon: React.ElementType;
   disabled: boolean;
+  screen?: Screen;
 }
 
 export interface CategorySpend {
@@ -39,3 +40,11 @@ export interface DebtEntry {
   direction: DebtDirection; // "owe" = I owe them, "owed" = they owe me
   reason: string;
 }
+
+export interface DailySpend {
+  date: string; // "YYYY-MM-DD"
+  totalSpent: number;
+  categories: CategorySpend[];
+}
+
+export type Screen = "dashboard" | "calendar";

@@ -4,6 +4,7 @@ import type {
   MonthlyFlow,
   CurrentTime,
   DebtEntry,
+  DailySpend,
 } from "@/lib/types";
 
 export const BALANCE_DATA: BalanceData = {
@@ -66,5 +67,38 @@ export const DEBT_DATA: DebtEntry[] = [
     amount: 150,
     direction: "owed",
     reason: "Coffee",
+  },
+];
+
+export const DAILY_SPENDING: DailySpend[] = [
+  {
+    date: "2026-07-01",
+    totalSpent: 320,
+    categories: [
+      { name: "food", value: 120, budget: 500, fill: "var(--color-food)" },
+      { name: "rent", value: 0, budget: 1200, fill: "var(--color-rent)" },
+      { name: "travel", value: 150, budget: 400, fill: "var(--color-travel)" },
+      { name: "other", value: 50, budget: 300, fill: "var(--color-other)" },
+    ],
+  },
+  {
+    date: "2026-07-02",
+    totalSpent: 85,
+    categories: [
+      { name: "food", value: 60, budget: 500, fill: "var(--color-food)" },
+      { name: "rent", value: 0, budget: 1200, fill: "var(--color-rent)" },
+      { name: "travel", value: 0, budget: 400, fill: "var(--color-travel)" },
+      { name: "other", value: 25, budget: 300, fill: "var(--color-other)" },
+    ],
+  },
+  {
+    date: "2026-07-03",
+    totalSpent: 1400,
+    categories: [
+      { name: "food", value: 200, budget: 500, fill: "var(--color-food)" },
+      { name: "rent", value: 1200, budget: 1200, fill: "var(--color-rent)" },
+      { name: "travel", value: 0, budget: 400, fill: "var(--color-travel)" },
+      { name: "other", value: 0, budget: 300, fill: "var(--color-other)" },
+    ],
   },
 ];
